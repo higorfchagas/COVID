@@ -1,64 +1,93 @@
 <template>
-    <div class="content">
-      <div class="container">
-       <div class="row">
-         <div class="col-md-2">
-
-         </div>
-         <div class="col-md-8">
-                 País:
-              <multiselect v-model="SelecaoPaises" :options="Paises" placeholder="Selecione um país"></multiselect>
-         </div>
-         <div class="col-md-2">
-           
-         </div>
-       </div>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          País:
+          <multiselect
+            v-model="SelecaoPaises"
+            :options="Paises"
+            v-if="Paises.length > 0 "
+            label="Country"
+            track-by="Country"
+            placeholder="Selecione um país"
+            v-on:input="getCasosPorPais(SelecaoPaises.Country)"
+          >></multiselect>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <table
+            class="table table-bordered table-hover dataTable no-footer"
+            style="width: 100%;"
+            role="grid">
+            <thead>
+              <tr role="row">
+                <th>País</th>
+                <th>Casos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in CasosPorPais" v-bind:key="item.Country">
+                <td>{{ item.Country }}</td>
+                <td>{{ item.Cases }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
-  import Multiselect from 'vue-multiselect'
-  import { http } from '@/services/config'
+import Multiselect from "vue-multiselect";
+import ServicesPaises from "@/services/paises";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Multiselect 
+    Multiselect,
   },
-   data () {
-      return {
-        SelecaoPaises: '',
-         Paises:[],
-      }
-},
-methods: {
+  data() {
+    return {
+      SelecaoPaises: "",
+      Paises: [],
+      CasosPorPais: [],
+    };
+  },
+  methods: {
     getPais: function () {
       var self = this;
-      const axios = require('axios');
-      axios.get('https://api.covid19api.com/countries')
-          .then(function (response) {
-          self.Paises = response.data;
-          })
-          .catch(function () {
-          console.log('Não foi possível carregar os países, contate ao administrador do site.');
-          })
-    },
-    listarPaises:() => {
-      var self = this;
-        return http.get('countries')
+      ServicesPaises.listarPaises()
         .then(function (response) {
           self.Paises = response.data;
-          })
-          .catch(function () {
-          alert('Não foi possível carregar os países, contate ao administrador do site.');
-          })
+        })
+        .catch(function () {
+          alert(
+            "Não foi possível carregar os países, contate ao administrador do site."
+          );
+        });
+    },
+    getCasosPorPais: function (SelecaoPaises) {
+      var self = this;
+      ServicesPaises.listarCasosPorPais(SelecaoPaises)
+        .then(function (response) {
+          self.CasosPorPais = response.data;
+        })
+        .catch(function () {
+          alert(
+            "Não foi possível carregar os países, contate ao administrador do site."
+          );
+        });
     },
   },
-mounted(){
-this.getPais();
-},
-}
-</script>
+  mounted() {
+    this.getPais();
+  },
+};
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
