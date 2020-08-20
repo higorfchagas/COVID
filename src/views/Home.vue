@@ -7,6 +7,7 @@
           País:
           <multiselect
             v-model="SelecaoPaises"
+            v-if="Paises.lenght != 0"
             :options="Paises"
             label="Country"
             track-by="Country"
@@ -90,3 +91,6 @@ export default {
   },
 };
 
+</script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
