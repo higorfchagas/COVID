@@ -19,7 +19,7 @@
       </div>
       <br />
       <br />
-      <div class="row">
+      <div class="row" v-if="SelecaoPaises">
         <div class="col-md-12">
           <table
             class="table table-bordered table-hover dataTable no-footer"
@@ -32,7 +32,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in CasosPorPais" v-bind:key="item.Country">
+              <tr v-for="item in CasosPorPais" v-bind:key="item.Country" :v-if="CasosPorPais.lenght != 0">
                 <td>{{ item.Country }}</td>
                 <td>{{ item.Cases }}</td>
               </tr>
