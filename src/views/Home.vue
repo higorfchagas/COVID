@@ -1,8 +1,18 @@
 <template>
-  <div class="backgroundImage" :style="{'background-image':'url(https://i.ibb.co/6nZYtq0/pulverizadorfundocovid.jpg)'}">
-    <div
-      class="content">
+  <div
+    class="backgroundImage"
+    :style="{'background-image':'url(https://res.cloudinary.com/mco/image/upload/v1597958028/CovidAnalyzer/covidmascara_qozxqi.jpg)'}"
+  >
+    <div class="content">
       <div class="container">
+        <div class="card textCard">
+          <h3 class="card-header">COVID ANALYZER</h3>
+          <div class="card-body">
+            <p class="card-text">Evolução da doença sars-covid19 por países.</p>
+          </div>
+        </div>
+        <br />
+        <br />
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
@@ -23,11 +33,7 @@
         <br />
         <div class="row" v-if="SelecaoPaises">
           <div class="col-md-12">
-            <table
-              class="table table-bordered table-hover dataTable no-footer"
-              style="width: 100%;"
-              role="grid"
-            >
+            <table class="table table-default table-Light">
               <thead>
                 <tr role="row">
                   <th>País</th>
@@ -111,5 +117,16 @@ export default {
   color: white;
   background-position: 30% 45%;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.table {
+  color: white;
+  font-weight: bold;
+}
+
+.textCard {
+  color: black;
 }
 </style>
