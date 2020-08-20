@@ -1,43 +1,51 @@
 <template>
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          País:
-          <multiselect
-            v-model="SelecaoPaises"
-            v-if="Paises.lenght != 0"
-            :options="Paises"
-            label="Country"
-            track-by="Country"
-            placeholder="Selecione um país"
-            v-on:input="getCasosPorPais(SelecaoPaises.Country)"
-          ></multiselect>
+  <div class="backgroundImage" :style="{'background-image':'url(https://i.ibb.co/6nZYtq0/pulverizadorfundocovid.jpg)'}">
+    <div
+      class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            País:
+            <multiselect
+              v-model="SelecaoPaises"
+              v-if="Paises.lenght != 0"
+              :options="Paises"
+              label="Country"
+              track-by="Country"
+              placeholder="Selecione um país"
+              v-on:input="getCasosPorPais(SelecaoPaises.Country)"
+            ></multiselect>
+          </div>
+          <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2"></div>
-      </div>
-      <br />
-      <br />
-      <div class="row" v-if="SelecaoPaises">
-        <div class="col-md-12">
-          <table
-            class="table table-bordered table-hover dataTable no-footer"
-            style="width: 100%;"
-            role="grid">
-            <thead>
-              <tr role="row">
-                <th>País</th>
-                <th>Casos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in CasosPorPais" v-bind:key="item.Country" :v-if="CasosPorPais.lenght != 0">
-                <td>{{ item.Country }}</td>
-                <td>{{ item.Cases }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <br />
+        <br />
+        <div class="row" v-if="SelecaoPaises">
+          <div class="col-md-12">
+            <table
+              class="table table-bordered table-hover dataTable no-footer"
+              style="width: 100%;"
+              role="grid"
+            >
+              <thead>
+                <tr role="row">
+                  <th>País</th>
+                  <th>Casos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="item in CasosPorPais"
+                  v-bind:key="item.Country"
+                  :v-if="CasosPorPais.lenght != 0"
+                >
+                  <td>{{ item.Country }}</td>
+                  <td>{{ item.Cases }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -90,7 +98,18 @@ export default {
     this.getPais();
   },
 };
-
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
+<style scoped>
+.backgroundImage {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  padding: 100px 0;
+  color: white;
+  background-position: 30% 45%;
+  background-size: cover;
+}
+</style>
