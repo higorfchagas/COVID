@@ -9,6 +9,7 @@
           <h3 class="card-header">COVID ANALYZER</h3>
           <div class="card-body">
             <p class="card-text">Evolução da doença sars-covid19 por países.</p>
+          <p>COVID-19 (do inglês Coronavirus Disease 2019) é uma doença infeciosa causada pelo coronavírus da síndrome respiratória aguda grave 2 (SARS-CoV-2). Os sintomas mais comuns são febre, tosse seca e cansaço. Entre outros sintomas menos comuns estão dores musculares, dor de garganta, dor de cabeça, congestão nasal, conjuntivite, perda do olfato e do paladar e erupções cutâneas. Cerca de 80% dos casos confirmados são ligeiros ou assintomáticos e a maioria recupera sem sequelas. No entanto, 15% são infeções graves que necessitam de oxigénio e 5% são infeções muito graves que necessitam de ventilação assistida em ambiente hospitalar. Os casos mais graves podem evoluir para pneumonia grave com insuficiência respiratória grave, septicémia, falência de vários órgãos e morte. Entre os sinais de agravamento da doença estão a falta de ar, dor ou pressão no peito, dedos de tom azul ou perturbações na fala e no movimento. O agravamento pode ser súbito, ocorre geralmente durante a segunda semana e requer atenção médica urgente.</p>
           </div>
         </div>
         <br />
@@ -53,6 +54,15 @@
             </table>
           </div>
         </div>
+          <div class="ad-container">
+    <Adsense
+      data-ad-client="ca-pub-2133011227802837"
+      data-ad-slot="1234567890"
+      data-ad-format="auto"
+      :data-full-width-responsive="true"
+    >
+    </Adsense>
+  </div>
       </div>
     </div>
   </div>
@@ -61,6 +71,10 @@
 <script>
 import Multiselect from "vue-multiselect";
 import ServicesPaises from "@/services/paises";
+import Ads from 'vue-google-adsense'
+import Vue from 'vue'
+Vue.use(require('vue-script2'))
+Vue.use(Ads.Adsense)
 
 export default {
   name: "Home",
