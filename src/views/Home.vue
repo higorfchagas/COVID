@@ -8,12 +8,11 @@
           <multiselect
             v-model="SelecaoPaises"
             :options="Paises"
-            v-if="Paises.length > 0 "
             label="Country"
             track-by="Country"
             placeholder="Selecione um país"
             v-on:input="getCasosPorPais(SelecaoPaises.Country)"
-          >></multiselect>
+          ></multiselect>
         </div>
         <div class="col-md-2"></div>
       </div>
