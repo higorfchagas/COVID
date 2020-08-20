@@ -33,7 +33,7 @@
         <br />
         <div class="row" v-if="SelecaoPaises">
           <div class="col-md-12">
-            <table class="table table-default table-Light">
+            <table class="table table-Secondary">
               <thead>
                 <tr role="row">
                   <th>País</th>
